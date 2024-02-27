@@ -25,4 +25,4 @@ def get_satellites(satellite_name, page, page_size):
     else:
         print("Failed to retrieve satellite data.")
 
-get_satellites("ISS", 1, 1)
+get_satellites("Starlink", 1, 1)
