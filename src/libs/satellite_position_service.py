@@ -37,5 +37,3 @@ def get_satellite_position(satellite_id: int) -> tuple[float, float] | None:
             print("No positions found.")
     else:
         print("Error deserializing satellite position response: {}, status_code", response.json(), response.status_code)
-
-get_satellite_position(25544)
