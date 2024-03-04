@@ -30,7 +30,7 @@ def parse_satellites_data(body):
         print(f"Error deserializing response: {e}")
         return []
 
-def get_satellites(satellite_name: str, page: str, page_size: str):
+def get_satellites(satellite_name: str=None, page: str=None, page_size: str=None):
     base_url = "https://tle.ivanstanojevic.me/api/tle"
     satellites_data = fetch_satellite_data(base_url, satellite_name, page, page_size)
     satellites = parse_satellites_data(satellites_data)

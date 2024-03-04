@@ -8,7 +8,7 @@ def print_satellite_info(satellite, lat, lon) :
     pass
 
 
-def display_spinner(message, duration=5):
+def display_spinner(message: str, duration: int=5):
     spin_chars = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
     end_time = time.time() + duration
 

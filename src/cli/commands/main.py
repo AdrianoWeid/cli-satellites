@@ -13,6 +13,7 @@ def main_menu():
 
         if selection == "View List":
             os.system('clear')
+            list
         elif selection == "Exit":
             return
 main_menu()
