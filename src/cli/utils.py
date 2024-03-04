@@ -7,6 +7,7 @@ from PIL import Image
 def print_satellite_info(satellite, lat, lon) :
     pass
 
+
 def display_spinner(message, duration=5):
     spin_chars = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
     end_time = time.time() + duration
