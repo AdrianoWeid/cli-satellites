@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
 import os
 import questionary
+import satellite_list
+
 def main_menu():
     os.system('clear')
     
@@ -8,12 +11,19 @@ def main_menu():
         "Please select an Option",
         choices=[
             "View List",
+            "Search",
             "Exit"
         ]).ask()
 
         if selection == "View List":
             os.system('clear')
-            list
+            list.list_ui()
+        elif selection == "Search":
+            os.system('clear')
+
+
         elif selection == "Exit":
             return
-main_menu()
+        
+if __name__ == "__main__":
+    main_menu()

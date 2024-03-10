@@ -1,13 +1,12 @@
 import os
 import questionary
-from ..utils import display_spinner
-from  src.libs.satellite_search_service import get_satellites  # Angenommener Import
-from info import info_ui  # Angenommener Import
+from src.cli.utils import display_spinner
+from  src.libs.satellite_search_service import get_satellites
+from info import info_ui 
 
 def list_ui():
     current_page = 1
     os.system("clear")
-    # Annahme: get_satellites gibt eine Liste von Satellitenobjekten zurück
     display_spinner("Searching...")
     satellites = get_satellites(None,current_page,None)
     print(satellites)
@@ -27,5 +26,3 @@ def list_ui():
         info_ui(satellite)
     else:
         print("Cancelled.")
-
-list_ui()
