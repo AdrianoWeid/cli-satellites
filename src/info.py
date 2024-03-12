@@ -1,7 +1,9 @@
 from satellite_position_service import get_tle
 from utils import print_satellite_info, display_spinner
+from map import map_ui
 import questionary
 import os
+
 
 def info_ui(satellite):
     norad_number, satellitename = satellite
@@ -12,8 +14,8 @@ def info_ui(satellite):
 
     while True:
         selections = [] 
-        selections.append(questionary.Choice(title="Back to selection", value="more"))
-        selections.append(questionary.Choice(title="Back to Main Menu", value="main_menu"))
+        selections.append(questionary.Choice(title="View map", value="map"))
+        selections.append(questionary.Choice(title="Back to selection", value="selection"))
         selections.append(questionary.Choice(title="Exit", value="exit"))
         
         satellite = questionary.select(
@@ -21,9 +23,9 @@ def info_ui(satellite):
             choices=selections
         ).ask()
 
-        if satellite == "more":
-            current_page += 1
-        elif satellite == "main_menu":
+        if satellite == "map":
+            map_ui(7, 2)
+        elif satellite == "selection":
             return
         elif satellite == "exit":
             exit(0)

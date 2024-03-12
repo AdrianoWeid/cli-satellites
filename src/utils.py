@@ -16,12 +16,12 @@ def print_satellite_info(satellitename, tle) :
     print("SATELLITE INFORMATION")
     print(f"Name: {satellitename}")
     print(f"Epoch: {satellite_rec.epochyr}")  # Format as needed
-    print(f"Inclination: {satellite_rec.inclo:.2f} degrees")
-    print(f"RAAN: {satellite_rec.nodeo:.2f} degrees")
-    print(f"Eccentricity: {satellite_rec.ecco:.2f}")
-    print(f"Perigee: {satellite_rec.argpo:.2f} degrees")
-    print(f"Mean Motion: {satellite_rec.no_kozai:.2f} revs per day")
-    print(f"Distance from Earth: {distance_from_earth:.2f} km")
+    print(f"Inclination: {satellite_rec.inclo} degrees")
+    print(f"RAAN: {satellite_rec.nodeo} degrees")
+    print(f"Eccentricity: {satellite_rec.ecco}")
+    print(f"Perigee: {satellite_rec.argpo} degrees")
+    print(f"Mean Motion: {satellite_rec.no_kozai} revs per day")
+    print(f"Distance from Earth: {distance_from_earth:.2f} km\n")
 
 def parse_tle(line1, line2):
     satellite_rec = Satrec.twoline2rv(line1, line2)
@@ -30,14 +30,12 @@ def parse_tle(line1, line2):
 def calculate_distance_from_earth(line1, line2, datetime):
     earth_radius_km = 6371.0
     jd, fr = jday(datetime.year, datetime.month, datetime.day, datetime.hour, datetime.minute, datetime.second)
-    print(jd, fr)
     satellite_rc = Satrec.twoline2rv(line1, line2)
     e, r, v = satellite_rc.sgp4(jd, fr)
     
     if e not in SGP4_ERRORS:
         distance_from_center = np.linalg.norm(r)
         distance_from_surface = distance_from_center - earth_radius_km
-        print(distance_from_surface)
         return distance_from_surface
     else:
         raise Exception("Error computing satellite position")

@@ -6,9 +6,9 @@ from list import list_ui
 
 def main_menu():
     command = 'cls' if os.name == 'nt' else 'clear'
-    os.system(command)
     
     while True: 
+        os.system(command)
         selection = questionary.select(
         "Please select an Option",
         choices=[
