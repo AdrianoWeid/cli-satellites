@@ -19,9 +19,8 @@ def build_query_url(base_url: str, satellite_id: int):
 def get_satellite_position(satellite_id: int) -> tuple[float, float] | None:
     base_url = "https://api.n2yo.com/rest/v1/satellite/positions"
     url = build_query_url(base_url, satellite_id)
-    r = ""
 
-    response = requests.get(url)
+    response = requests.get(url, verify=False)
 
     if response.status_code == 200:
         json_response = response.json()
@@ -31,9 +30,26 @@ def get_satellite_position(satellite_id: int) -> tuple[float, float] | None:
             positions = positions[0]
             satlatitude = positions.get("satlatitude")
             satlongitude = positions.get("satlongitude")
-            print(satlatitude)
             return satlatitude, satlongitude
         else:
             print("No positions found.")
+    else:
+        print("Error deserializing satellite position response: {}, status_code", response.json(), response.status_code)
+
+
+def get_tle(NORAD):
+    base_url = "https://api.n2yo.com/rest/v1/satellite/tle/"
+    api_key = os.getenv("N2YO_API_KEY")
+    url = f"{base_url}{NORAD}&apiKey={api_key}"
+    response = requests.get(url, verify=False)
+    
+    if response.status_code == 200:
+        json_response = response.json()
+        tle = json_response.get("tle").split("\r\n")
+
+        if not tle:
+            print("No tle-data found or NORAD_Number is wrong.")
+        else:
+            return tle
     else:
         print("Error deserializing satellite position response: {}, status_code", response.json(), response.status_code)
