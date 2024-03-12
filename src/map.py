@@ -1,4 +1,4 @@
-from ..utils import convert_image_to_ascii
+from utils import convert_image_to_ascii
 import time
 import threading
 import os

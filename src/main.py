@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import os
 import questionary
-import satellite_list
+from list import list_ui
+
 
 def main_menu():
-    os.system('clear')
+    command = 'cls' if os.name == 'nt' else 'clear'
+    os.system(command)
     
     while True: 
         selection = questionary.select(
@@ -16,14 +18,14 @@ def main_menu():
         ]).ask()
 
         if selection == "View List":
-            os.system('clear')
-            list.list_ui()
+            os.system(command)
+            list_ui()
         elif selection == "Search":
-            os.system('clear')
-
-
+            os.system(command)
         elif selection == "Exit":
-            return
+            break
+        
+    print("Program finished successfully.")
         
 if __name__ == "__main__":
     main_menu()
