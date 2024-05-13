@@ -27,10 +27,12 @@ def list_ui():
         ).ask()
 
         if satellite == "more":
+            os.system(command)
             current_page += 1
         elif satellite == "main_menu":
             return
         elif satellite == "exit":
+            os.system(command)
             exit(0)
         else:
             info_ui(satellite)

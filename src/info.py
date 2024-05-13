@@ -24,10 +24,13 @@ def info_ui(satellite):
         ).ask()
 
         if satellite == "map":
-            map_ui(7, 2)
+            os.system(command)
+            map_ui(norad_number)
         elif satellite == "selection":
+            os.system(command)
             return
         elif satellite == "exit":
+            os.system(command)
             exit(0)
         else:
             info_ui(satellite)

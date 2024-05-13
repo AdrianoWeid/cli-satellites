@@ -20,7 +20,7 @@ def get_satellite_position(satellite_id: int) -> tuple[float, float] | None:
     base_url = "https://api.n2yo.com/rest/v1/satellite/positions"
     url = build_query_url(base_url, satellite_id)
 
-    response = requests.get(url, verify=False)
+    response = requests.get(url)
 
     if response.status_code == 200:
         json_response = response.json()
@@ -41,7 +41,7 @@ def get_tle(NORAD):
     base_url = "https://api.n2yo.com/rest/v1/satellite/tle/"
     api_key = os.getenv("N2YO_API_KEY")
     url = f"{base_url}{NORAD}&apiKey={api_key}"
-    response = requests.get(url, verify=False)
+    response = requests.get(url)
     
     if response.status_code == 200:
         json_response = response.json()

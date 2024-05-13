@@ -23,7 +23,8 @@ def main_menu():
         elif selection == "Search":
             os.system(command)
         elif selection == "Exit":
-            break
+            os.system(command)
+            exit(0) 
         
     print("Program finished successfully.")
         
