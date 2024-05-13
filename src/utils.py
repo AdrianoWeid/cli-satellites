@@ -1,5 +1,4 @@
 from datetime import datetime
-from itertools import cycle
 from sgp4.api import Satrec, SGP4_ERRORS, jday
 from PIL import Image
 import sys
